@@ -1,0 +1,32 @@
+# several key selective parameters
+data_dir: './data' #dir to load data
+output_dir: './output' #dir to save output
+
+# word embedding
+embedding_path: './data/glove/glove.6B.200d.txt' #pre_trained word embedding
+word_dim: 200 #dimension of word embedding
+
+# train settings
+model_name: PA-LSTM #model name
+mode: 1 #[0, 1]  running mode: 1 for training; otherwise testing
+seed: 9918 #random seed
+cuda: 0 #num of gpu device, if -1, select cpu
+epoch: 30 #max epoches during training
+
+# hyper parameters
+word_dropout: 0.04 #randomly set a token to be <UNK>
+dropout: 0.5 #the possiblity of dropout
+batch_size: 50 #batch size
+lr: 1.0 #learning rate
+max_len: 100 #max length of sentence
+att_len: 200 #the size of attention layer
+pos_dim: 30 #dimension of position embedding
+
+# hyper parameters for rnn
+hidden_size: 200 #the dimension of hidden units in RNN layer
+layers_num: 2 #num of RNN layers
+
+margin_positive: 2.5 #positive margin in the CRCNN loss function
+margin_negative: 0.5 #negative margin in the CRCNN loss function
+gamma: 2.0 #scaling factor `gamma` in the CRCNN loss function
+L2_decay: 1e-3 #L2 weight decay

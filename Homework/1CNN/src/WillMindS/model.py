@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-# @Version : Python 3.6
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

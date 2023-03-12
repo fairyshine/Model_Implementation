@@ -1,0 +1,28 @@
+# several key selective parameters
+data_dir: './data' #dir to load data
+output_dir: './output' #dir to save output
+
+# word embedding
+embedding_path: './data/glove/glove.6B.100d.txt' #pre_trained word embedding
+word_dim: 100 #dimension of word embedding
+
+# train settings
+model_name: Att-BLSTM #model name
+mode: 1 #[0, 1]  running mode: 1 for training; otherwise testing
+seed: 9918 #random seed
+cuda: 0 #num of gpu device, if -1, select cpu
+epoch: 30 #max epoches during training
+
+# hyper parameters
+batch_size: 10 #batch size
+lr: 1.0 #learning rate
+max_len: 100 #max length of sentence
+
+# hyper parameters for model
+emb_dropout: 0.3 #the possiblity of dropout in embedding layer
+lstm_dropout: 0.3 #the possiblity of dropout in (Bi)LSTM layer
+linear_dropout: 0.5 #the possiblity of dropout in liner layer
+hidden_size: 100 #the dimension of hidden units in (Bi)LSTM layer
+layers_num: 1 #num of RNN layers
+
+L2_decay: 1e-5 #L2 weight decay

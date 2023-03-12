@@ -7,10 +7,10 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from config import Config
-from utils import WordEmbeddingLoader, RelationLoader, SemEvalDataLoader
-from model import CNN
-from evaluate import Eval
+from WillMindS.config import Config
+from WillMindS.dataloader import WordEmbeddingLoader, RelationLoader, SemEvalDataLoader
+from WillMindS.model import Att_BLSTM
+from WillMindS.evaluate import Eval
 
 
 def print_result(predict_label, id2rel, start_idx=8001):
@@ -22,8 +22,8 @@ def print_result(predict_label, id2rel, start_idx=8001):
 
 def train(model, criterion, loader, config):
     train_loader, dev_loader, _ = loader
-    optimizer = optim.Adam(model.parameters(), lr=config.lr,
-                           weight_decay=config.L2_decay)
+    optimizer = optim.Adadelta(
+        model.parameters(), lr=config.lr, weight_decay=config.L2_decay)
 
     print(model)
     print('traning model parameters:')
@@ -45,6 +45,7 @@ def train(model, criterion, loader, config):
             logits = model(data)
             loss = criterion(logits, label)
             loss.backward()
+            nn.utils.clip_grad_value_(model.parameters(), clip_value=5)
             optimizer.step()
 
         _, train_loss, _ = eval_tool.evaluate(model, criterion, train_loader)
@@ -96,7 +97,7 @@ if __name__ == '__main__':
     print('finish!')
 
     print('--------------------------------------')
-    model = CNN(word_vec=word_vec, class_num=class_num, config=config)
+    model = Att_BLSTM(word_vec=word_vec, class_num=class_num, config=config)
     model = model.to(config.device)
     criterion = nn.CrossEntropyLoss()
 

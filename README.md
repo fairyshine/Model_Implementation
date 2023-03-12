@@ -1,2 +1,9 @@
 # Model_Implementation
-论文的复现。
+## Homework
+
+### 组内关系抽取论文复现4篇
+
+#### 1CNN
+
+#### 2 CR-CNN
+

@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-# @Version : Python 3.6
-
-
 import os
 import json
 import torch
@@ -174,7 +169,7 @@ class SemEvalDataLoader(object):
             dataset=dataset,
             batch_size=self.config.batch_size,
             shuffle=shuffle,
-            num_workers=2,
+            num_workers=0,
             collate_fn=self.__collate_fn
         )
         return loader

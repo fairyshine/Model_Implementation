@@ -1,0 +1,29 @@
+# several key selective parameters
+data_dir: './data' #dir to load data
+output_dir: './output' #dir to save output
+
+# word embedding
+embedding_path: './data/embedding/hlbl-embeddings-scaled.EMBEDDING_SIZE=50.txt' #pre_trained word embedding
+word_dim: 50 #dimension of word embedding
+
+# train settings
+model_name: CNN #model name
+mode: 1 #[0, 1]  running mode: 1 for training; otherwise testing
+seed: 9918 #random seed
+cuda: 0 #num of gpu device, if -1, select cpu
+epoch: 20 #max epoches during training
+
+# hyper parameters
+dropout: 0.5 #the possiblity of dropout
+batch_size: 128 #batch size
+lr: 0.01 #learning rate
+max_len: 100 #max length of sentence
+pos_dis: 50 #max distance of position embedding
+pos_dim: 5 #dimension of position embedding
+hidden_size: 100 #the size of linear layer between convolution and classification
+
+# hyper parameters for cnn
+filter_num: 200 #the number of filters in convolution
+window: 3 #the size of window in convolution
+
+L2_decay: 1e-5 #L2 weight decay
